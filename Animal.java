@@ -119,4 +119,20 @@ public abstract class Animal
      * @return The age at which a animal starts to bread
      */
     abstract protected int getBreedingAge();
+    
+    /**
+     * 
+     */
+    protected void incrementAge()
+    {
+        setAge(getAge() + 1);
+        if(getAge() > getMaxAge()) {
+            setDead();
+        }
+    }
+    
+    /**
+     * 
+     */
+    abstract protected int getMaxAge();
 }
