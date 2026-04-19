@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 
 /**
  * A class representing shared characteristics of animals.
@@ -135,4 +136,34 @@ public abstract class Animal
      * 
      */
     abstract protected int getMaxAge();
+    
+    /**
+     * Generate a number representing the number of births,
+     * if it can breed.
+     * @return The number of births (may be zero).
+     */
+    protected int breed()
+    {
+        int births = 0;
+        if(canBreed() && getRandom().nextDouble() <= getBREEDING_PROBABILITY()) {
+            births = getRandom().nextInt(getMAX_LITTER_SIZE()) + 1;
+        }
+        return births;
+    }
+    
+     /**
+     * 
+     */
+    abstract protected double getBREEDING_PROBABILITY();
+    
+    /**
+     * 
+     */
+    abstract protected int getMAX_LITTER_SIZE();
+    
+    /**
+     * 
+     */
+    abstract protected Random getRandom();
+    
 }
