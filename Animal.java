@@ -106,4 +106,17 @@ public abstract class Animal
     {
         return age;
     }
+    
+    /**
+     * 
+     */
+    protected boolean canBreed()
+    {
+        return getAge() >= getBreedingAge();
+    }
+    
+    /**
+     * @return The age at which a animal starts to bread
+     */
+    abstract protected int getBreedingAge();
 }
