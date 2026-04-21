@@ -4,8 +4,8 @@ import java.util.Random;
 /**
  * A class representing shared characteristics of animals.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29 (2)
+ * @author Cristian Solis
+ * @version 2026.04.20
  */
 public abstract class Animal
 {
@@ -17,6 +17,7 @@ public abstract class Animal
     private Location location;
     // Age of the animal
     private int age;
+    
     /**
      * Create a new animal at location in field.
      * 
@@ -93,7 +94,8 @@ public abstract class Animal
     }
     
     /**
-     * 
+     * Sets the animal's age to a new age using int newAge.
+     * @param newAge The animal's new age.
      */
     protected void setAge(int newAge)
     {
@@ -101,7 +103,8 @@ public abstract class Animal
     }
     
     /**
-     * 
+     * Return the animal's age.
+     * @return The animal's age
      */
     protected int getAge()
     {
@@ -109,7 +112,8 @@ public abstract class Animal
     }
     
     /**
-     * 
+     * Checks to see if the animal's current age is greater or equal to the animal's Breeding age.
+     * @return true if animal's age is greater or equal to animal's Breeding age and false otherwise.
      */
     protected boolean canBreed()
     {
@@ -117,12 +121,13 @@ public abstract class Animal
     }
     
     /**
-     * @return The age at which a animal starts to bread
+     * @return The age at which a animal starts to bread.
      */
     abstract protected int getBreedingAge();
     
     /**
-     * 
+     * Sets the animal's age by one by adding 1 to the animal's current age
+     * Checks if the animal's age is greater then the animal's max age and if so sets the animal to dead.
      */
     protected void incrementAge()
     {
@@ -133,7 +138,7 @@ public abstract class Animal
     }
     
     /**
-     * 
+     * @return The animal's maxAge it can live for.
      */
     abstract protected int getMaxAge();
     
@@ -152,18 +157,17 @@ public abstract class Animal
     }
     
      /**
-     * 
+     * @return The animal's Breeding probaility.
      */
     abstract protected double getBREEDING_PROBABILITY();
     
     /**
-     * 
+     * @return The animal's max number of births it can give.
      */
     abstract protected int getMAX_LITTER_SIZE();
     
     /**
-     * 
+     * @return The animal's random value.
      */
     abstract protected Random getRandom();
-    
 }

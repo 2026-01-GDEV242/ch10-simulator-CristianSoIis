@@ -2,41 +2,41 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * A simple model of a rabbit.
- * Rabbits age, move, breed, and die.
+ * A simple model of a fish.
+ * Fishs's age, move, breed, and die.
  * 
  * @author Cristian Solis
  * @version 2026.04.20
  */
-public class Rabbit extends Animal
+public class Fish extends Animal
 {
-    // Characteristics shared by all rabbits (class variables).
+    // Characteristics shared by all fish's (class variables).
 
-    // The age at which a rabbit can start to breed.
+    // The age at which a fish can start to breed.
     private static final int BREEDING_AGE = 5;
-    // The age to which a rabbit can live.
-    private static final int MAX_AGE = 40;
-    // The likelihood of a rabbit breeding.
-    private static final double BREEDING_PROBABILITY = 0.12;
+    // The age to which a fish can live.
+    private static final int MAX_AGE = 20;
+    // The likelihood of a fish breeding.
+    private static final double BREEDING_PROBABILITY = 0.08;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 4;
+    private static final int MAX_LITTER_SIZE = 8;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
     // Individual characteristics (instance fields).
     
     // The rabbit's age.
-    // private int age;
+    //private int age;
 
     /**
-     * Create a new rabbit. A rabbit may be created with age
+     * Create a new fish. A fish may be created with age
      * zero (a new born) or with a random age.
      * 
-     * @param randomAge If true, the rabbit will have a random age.
+     * @param randomAge If true, the fish will have a random age.
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Rabbit(boolean randomAge, Field field, Location location)
+    public Fish(boolean randomAge, Field field, Location location)
     {
         super(field, location);
         //age = 0;
@@ -48,15 +48,15 @@ public class Rabbit extends Animal
     }
     
     /**
-     * This is what the rabbit does most of the time - it runs 
+     * This is what the fish does most of the time - it runs 
      * around. Sometimes it will breed or die of old age.
-     * @param newRabbits A list to return newly born rabbits.
+     * @param newFishs A list to return newly born fishs.
      */
-    public void act(List<Animal> newRabbits)
+    public void act(List<Animal> newFishs)
     {
         incrementAge();
         if(isAlive()) {
-            giveBirth(newRabbits);            
+            giveBirth(newFishs);            
             // Try to move into a free location.
             Location newLocation = getField().freeAdjacentLocation(getLocation());
             if(newLocation != null) {
@@ -71,7 +71,7 @@ public class Rabbit extends Animal
 
     /**
      * Increase the age.
-     * This could result in the rabbit's death.
+     * This could result in the fish's death.
      */
     //private void incrementAge()
     //{
@@ -86,21 +86,21 @@ public class Rabbit extends Animal
     //}
     
     /**
-     * Check whether or not this rabbit is to give birth at this step.
+     * Check whether or not this fish is to give birth at this step.
      * New births will be made into free adjacent locations.
-     * @param newRabbits A list to return newly born rabbits.
+     * @param newFishs A list to return newly born fishs.
      */
-    private void giveBirth(List<Animal> newRabbits)
+    private void giveBirth(List<Animal> newFishs)
     {
-        // New rabbits are born into adjacent locations.
+        // New fishs are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
         List<Location> free = field.getFreeAdjacentLocations(getLocation());
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Rabbit young = new Rabbit(false, field, loc);
-            newRabbits.add(young);
+            Fish young = new Fish(false, field, loc);
+            newFishs.add(young);
         }
     }
         
@@ -119,8 +119,8 @@ public class Rabbit extends Animal
     } */
 
     /**
-     * A rabbit can breed if it has reached the breeding age.
-     * @return true if the rabbit can breed, false otherwise.
+     * A fish can breed if it has reached the breeding age.
+     * @return true if the fish can breed, false otherwise.
      */
     /*private boolean canBreed()
     {
@@ -130,7 +130,7 @@ public class Rabbit extends Animal
     } */
     
     /**
-     * Returns the Rabbit's breedingAge.
+     * Returns the Fish's breedingAge.
      * @return BREEDING_AGE
      */
     public int getBreedingAge()
@@ -139,7 +139,7 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Returns the Rabbit's maxAge.
+     * Returns the Fish's maxAge.
      * @return MAX_AGE
      */
     public int getMaxAge()
@@ -148,7 +148,7 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Returns the Rabbit's Breeding probability.
+     * Returns the Fish's Breeding probability.
      * @return BREEDING_PROBABILITY
      */
     public double getBREEDING_PROBABILITY()
@@ -157,7 +157,7 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Returns the Rabbit's max amount of births.
+     * Returns the Fish's max amount of births.
      * @return MAX_LITTER_SIZE
      */
     public int getMAX_LITTER_SIZE()
@@ -166,7 +166,7 @@ public class Rabbit extends Animal
     }
     
     /**
-     * Returns the Rabbit's random number for control breeding.
+     * Returns the Fish's random number for control breeding.
      * @return rand
      */
     public Random getRandom()

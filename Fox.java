@@ -4,10 +4,10 @@ import java.util.Random;
 
 /**
  * A simple model of a fox.
- * Foxes age, move, eat rabbits, and die.
+ * Foxes age, move, eat rabbits, eat fishs and die.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29 (2)
+ * @author Cristian Solis
+ * @version 2026.04.20
  */
 public class Fox extends Animal
 {
@@ -24,6 +24,11 @@ public class Fox extends Animal
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
     private static final int RABBIT_FOOD_VALUE = 9;
+    
+    // The food value of a single fish. In effect, this is the
+    // number of steps a fox can go before it has to eat again.
+    private static final int FISH_FOOD_VALUE = 3;
+    
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -31,7 +36,7 @@ public class Fox extends Animal
     // The fox's age.
     //private int age;
     
-    // The fox's food level, which is increased by eating rabbits.
+    // The fox's food level, which is increased by eating rabbits and fishs.
     private int foodLevel;
 
     /**
@@ -48,12 +53,12 @@ public class Fox extends Animal
         if(randomAge) {
             //age = rand.nextInt(MAX_AGE);
             setAge(rand.nextInt(MAX_AGE));
-            foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
+            foodLevel = rand.nextInt(RABBIT_FOOD_VALUE + FISH_FOOD_VALUE);
         }
         else {
             //age = 0;
             setAge(0);
-            foodLevel = RABBIT_FOOD_VALUE;
+            foodLevel = RABBIT_FOOD_VALUE + FISH_FOOD_VALUE;
         }
     }
     
@@ -136,6 +141,15 @@ public class Fox extends Animal
                     return where;
                 }
             }
+            
+            if(animal instanceof Fish) {
+                Fish fish = (Fish) animal;
+                if(fish.isAlive()) { 
+                    fish.setDead();
+                    foodLevel = FISH_FOOD_VALUE;
+                    return where;
+                }
+            }
         }
         return null;
     }
@@ -185,7 +199,8 @@ public class Fox extends Animal
     } */
     
     /**
-     * 
+     * Returns the Fox's breedingAge.
+     * @return BREEDING_AGE
      */
     public int getBreedingAge()
     {
@@ -193,7 +208,8 @@ public class Fox extends Animal
     }
     
     /**
-     * 
+     * Returns the Fox's maxAge.
+     * @return MAX_AGE
      */
     public int getMaxAge()
     {
@@ -201,7 +217,8 @@ public class Fox extends Animal
     }
     
     /**
-     * 
+     * Returns the Fox's Breeding probability.
+     * @return BREEDING_PROBABILITY
      */
     public double getBREEDING_PROBABILITY()
     {
@@ -209,7 +226,8 @@ public class Fox extends Animal
     }
     
     /**
-     * 
+     * Returns the Fox's max amount of births.
+     * @return MAX_LITTER_SIZE
      */
     public int getMAX_LITTER_SIZE()
     {
@@ -217,7 +235,8 @@ public class Fox extends Animal
     }
     
     /**
-     * 
+     * Returns the Fox's random number for control breeding.
+     * @return rand
      */
     public Random getRandom()
     {
