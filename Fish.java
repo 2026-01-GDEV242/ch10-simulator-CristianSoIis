@@ -24,9 +24,6 @@ public class Fish extends Animal
     private static final Random rand = Randomizer.getRandom();
     
     // Individual characteristics (instance fields).
-    
-    // The rabbit's age.
-    //private int age;
 
     /**
      * Create a new fish. A fish may be created with age
@@ -39,7 +36,6 @@ public class Fish extends Animal
     public Fish(boolean randomAge, Field field, Location location)
     {
         super(field, location);
-        //age = 0;
         setAge(0);
         if(randomAge) {
             // age = rand.nextInt(MAX_AGE);
@@ -70,22 +66,6 @@ public class Fish extends Animal
     }
 
     /**
-     * Increase the age.
-     * This could result in the fish's death.
-     */
-    //private void incrementAge()
-    //{
-        /*
-         * age++;
-        if(age > MAX_AGE) 
-         */
-        //setAge(getAge() + 1);
-        //if(getAge() > MAX_AGE) {
-            //setDead();
-        //}
-    //}
-    
-    /**
      * Check whether or not this fish is to give birth at this step.
      * New births will be made into free adjacent locations.
      * @param newFishs A list to return newly born fishs.
@@ -104,31 +84,6 @@ public class Fish extends Animal
         }
     }
         
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
-     */
-    /*private int breed()
-    {
-        int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
-    } */
-
-    /**
-     * A fish can breed if it has reached the breeding age.
-     * @return true if the fish can breed, false otherwise.
-     */
-    /*private boolean canBreed()
-    {
-        //return age >= BREEDING_AGE;
-        return getAge() >= BREEDING_AGE;
-
-    } */
-    
     /**
      * Returns the Fish's breedingAge.
      * @return BREEDING_AGE
